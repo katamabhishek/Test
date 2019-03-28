@@ -1,2 +1,2 @@
 def f1():
-    pass
+    print("F1")
