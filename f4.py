@@ -6,3 +6,6 @@ def f4():
 
 def f6():
     print("From some thing")
+
+def f5():
+    print("From some thing")
