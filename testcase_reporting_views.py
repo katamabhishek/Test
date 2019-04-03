@@ -192,7 +192,20 @@ class TestcaseReporting(object):
         """
         Return all report data or if needed of only specific type
         """
-        
+        data = data or request.json
+        final_dict = {}
+        final_dict["count"] = 0
+        final_dict["testinfo"] = []
+        final_dict['job_attributes'] = []
+        final_dict["testattr"] = []
+        final_dict['job_attributes_col'] = []
+        final_dict['cirrus_attributes_col'] = []
+        final_dict['xyz'] = []
+        final_dict['testcase_attributes_col'] = []
+        final_dict["reporttype"] = data.get("reporttype", "Testcase results")
+        final_dict["retain"] = dict(data)
+        final_dict["view_data"] = {}
+        final_dict.update(dict(data))
 
         if "view_name" in data:
             view_name = data.get("view_name")
