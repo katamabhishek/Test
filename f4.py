@@ -4,6 +4,8 @@ def f3():
 def f4():
     print("From some thing")
 
-def f5():
+def f6():
     print("From some thing")
 
+def f5():
+    print("From some thing")
