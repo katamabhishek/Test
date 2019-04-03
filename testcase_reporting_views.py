@@ -258,6 +258,15 @@ class TestcaseReporting(object):
             ring_data = self._get_aggregated_data(from_date, to_date, data.get("type"))
             ring_data["stage_status"] = ring_data.pop("jobstatus")
 
+            # Rename/remove some fields to be seen from GUI
+            indx = fields_visible.index("stage")
+            final_dict["cirrus_attributes_col"][indx] = "stage_stdout"
+            fields_visible.remove("log_uri")
+            indx = fields_visible.index("status")
+            fields_visible[indx] = "stage_status"
+            final_dict["cirrus_attributes_col"][indx] = "stage_status"
+            indx = fields_visible.index("type")
+            final_dict["cirrus_attributes_col"][indx] = "test_type"
 
             # Iterate over documents, then fetch needed data from doc and store
             # it to return on to GUI
