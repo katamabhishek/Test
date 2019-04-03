@@ -434,3 +434,29 @@ class TestcaseReporting(object):
         full_src_path = os.path.join(self.test_results_folder, src_path)
         full_dest_path = os.path.join(self.test_results_folder, dest_path)
         src_is_a_file = os.path.isfile(full_src_path+".json")
+        src_exists = os.path.exists(full_src_path)
+        dest_exists = os.path.exists(full_dest_path)
+        logging.error(full_src_path)
+        logging.error(full_dest_path)
+
+        if not dest_exists:
+            raise IOError("Destination path %s does not exist"%dest_path)
+        elif src_is_a_file:
+            full_src_path += ".json"
+        elif not src_exists:
+            raise IOError("Source path %s does not exist"%src_path)
+
+        logging.error(full_dest_path)
+        shutil.move(full_src_path, full_dest_path)
+        
+        if not dest_exists:
+            raise IOError("Destination path %s does not exist"%dest_path)
+        elif src_is_a_file:
+            full_src_path += ".json"
+        elif not src_exists:
+            raise IOError("Source path %s does not exist"%src_path)
+
+        logging.error(full_dest_path)
+        shutil.move(full_src_path, full_dest_path)
+        
+        print("XYZ")
